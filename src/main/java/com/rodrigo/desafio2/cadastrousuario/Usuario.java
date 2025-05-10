@@ -5,9 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+
 @Entity
 public class Usuario {
     @Id
@@ -20,9 +23,11 @@ public class Usuario {
     @Deprecated
     public Usuario() {}
 
-    public Usuario(@Email @NotBlank String email, @NotBlank @Length(min = 6) String senha) {
+    public Usuario(@Email @NotBlank String email, SenhaLimpa senhaLimpa) {
+        Assert.isTrue(StringUtils.hasLength(email), "Email não pode ser em branco!");
+        Assert.notNull(senhaLimpa, "o objeto do tipo senha limpa nao pode ser nulo");
         this.email = email;
-        this.senha = senha;
+        this.senha = senhaLimpa.hash();
     }
 
     @Override

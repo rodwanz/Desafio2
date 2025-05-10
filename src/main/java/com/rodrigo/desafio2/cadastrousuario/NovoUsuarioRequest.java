@@ -9,15 +9,13 @@ public class NovoUsuarioRequest {
     @Email
     @NotBlank
     private String email;
-    @NotBlank
-    @Length(min = 6)
-    private String senha;
+    private @NotBlank @Length(min = 6) String senha;
 
     public NovoUsuarioRequest(@Email @NotBlank String email, @NotBlank @Length(min = 6) String senha) {
         this.email = email;
         this.senha = senha;
     }
     Usuario toUsuario(){
-        return new Usuario(email, senha);
+        return new Usuario(email, new SenhaLimpa(senha));
     }
 }
