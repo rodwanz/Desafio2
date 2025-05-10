@@ -17,4 +17,7 @@ public class NovoUsuarioRequest {
         this.email = email;
         this.senha = senha;
     }
+    Usuario toUsuario(){
+        return new Usuario(email, senha);
+    }
 }
