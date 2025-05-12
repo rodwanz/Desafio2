@@ -18,4 +18,8 @@ public class NovoUsuarioRequest {
     Usuario toUsuario(){
         return new Usuario(email, new SenhaLimpa(senha));
     }
+
+    public String getEmail() {
+        return email;
+    }
 }

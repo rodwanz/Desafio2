@@ -30,6 +30,14 @@ public class Usuario {
         this.senha = senhaLimpa.hash();
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" + "email='" + email + '\'' + ", senha='" + senha + '\'' + '}';
