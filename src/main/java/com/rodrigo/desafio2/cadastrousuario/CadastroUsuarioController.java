@@ -15,13 +15,16 @@ import javax.validation.Valid;
 public class CadastroUsuarioController {
     @PersistenceContext
     private EntityManager manager;
-
     @Autowired
     private ProibeEmailDuplicadoValidator proibeEmailDuplicadoValidator;
 
     @InitBinder
     public void init(WebDataBinder binder){
         binder.addValidators(proibeEmailDuplicadoValidator);
+    }
+
+    public void bind(WebDataBinder webDataBinder){
+        webDataBinder.addValidators(proibeEmailDuplicadoValidator);
     }
     @PostMapping(value = "/usuarios")
     @Transactional

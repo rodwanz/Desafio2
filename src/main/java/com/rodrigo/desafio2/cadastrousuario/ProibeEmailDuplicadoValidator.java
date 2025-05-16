@@ -13,6 +13,10 @@ public class ProibeEmailDuplicadoValidator implements Validator {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    public ProibeEmailDuplicadoValidator(UsuarioRepository usuarioRepository) {
+        return;
+    }
+
     @Override
     public boolean supports(Class<?> clazz) {
         return NovoUsuarioRequest.class.isAssignableFrom(clazz);
