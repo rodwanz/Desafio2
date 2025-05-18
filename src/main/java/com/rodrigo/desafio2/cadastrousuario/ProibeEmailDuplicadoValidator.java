@@ -14,7 +14,7 @@ public class ProibeEmailDuplicadoValidator implements Validator {
     private UsuarioRepository usuarioRepository;
 
     public ProibeEmailDuplicadoValidator(UsuarioRepository usuarioRepository) {
-        return;
+        this.usuarioRepository = usuarioRepository;
     }
 
     @Override
